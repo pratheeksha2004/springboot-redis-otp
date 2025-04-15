@@ -14,7 +14,7 @@ public class OtpService {
     private RedisTemplate<String, String> redisTemplate;
 
     public String generateOtp(String phone) {
-        String otp = String.valueOf(new Random().nextInt(900000) + 100000); // 6-digit OTP
+        String otp = String.valueOf(new Random().nextInt(900000) + 100000); 
         redisTemplate.opsForValue().set("OTP:" + phone, otp, 5, TimeUnit.MINUTES);
         return otp;
     }
